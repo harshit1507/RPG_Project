@@ -20,12 +20,15 @@ public class Mover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0))
+        UpdateAnimator();
+    }
+
+    private void LateUpdate()
+    {
+        if (Input.GetMouseButton(0))
         {
             MoveToCursor();
         }
-
-        UpdateAnimator();
     }
 
     private void MoveToCursor()
