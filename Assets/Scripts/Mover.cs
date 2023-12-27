@@ -25,21 +25,14 @@ public class Mover : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetMouseButton(0))
-        {
-            MoveToCursor();
-        }
+        
     }
 
-    private void MoveToCursor()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+    
 
-        if(Physics.Raycast(ray, out hit))
-        {
-            GetComponent<NavMeshAgent>().SetDestination(hit.point);
-        }
+    public void MoveTo(Vector3 destination)
+    {
+        GetComponent<NavMeshAgent>().SetDestination(destination);
     }
 
     private void UpdateAnimator()
