@@ -1,3 +1,4 @@
+using RPG.Core;
 using RPG.Movement;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,7 +6,7 @@ using UnityEngine;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] float weaponRange = 2f;
 
@@ -21,7 +22,7 @@ namespace RPG.Combat
             }
             else
             {
-                GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
             }
         }
 
@@ -32,6 +33,7 @@ namespace RPG.Combat
 
         public void Attack(CombatTarget target)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             this.target = target.transform;
         }
         
